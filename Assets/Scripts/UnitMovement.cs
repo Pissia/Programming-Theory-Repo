@@ -8,6 +8,7 @@ public class UnitMovement : MonoBehaviour
     public bool isSelected;
     public GameObject skid;
     private bool isSkidPickedUp;
+   
 
     public virtual bool SelectedUnit()
     {
@@ -23,7 +24,7 @@ public class UnitMovement : MonoBehaviour
     public virtual void Move(float speed, Rigidbody rb)
     {
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
-        localVelocity.x = -speed * Input.GetAxis("Vertical");
+        localVelocity.z = speed * Input.GetAxis("Vertical");
         rb.velocity = transform.TransformDirection(localVelocity);
     }
 
@@ -32,8 +33,8 @@ public class UnitMovement : MonoBehaviour
         if(velocity != 0)
         {
             Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
-            rb.AddTorque(Vector3.up * rotationSpeed * -localVelocity.x * Input.GetAxis("Horizontal"));
-            localVelocity.z = 0f;
+            rb.AddTorque(Vector3.up * rotationSpeed * localVelocity.z * Input.GetAxis("Horizontal"));
+            localVelocity.x = 0f;
             rb.velocity = transform.TransformDirection(localVelocity);
         }
     }
@@ -47,15 +48,15 @@ public class UnitMovement : MonoBehaviour
 
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
         rb.transform.Rotate(Vector3.up, rotationSpeed * Input.GetAxis("Horizontal"));
-        localVelocity.z = 0f;
+        localVelocity.x = 0f;
         rb.velocity = transform.TransformDirection(localVelocity);
 
     }
 
-    public virtual bool PickUpSkid(CapsuleCollider forkCollider)
+    public virtual bool PickUpSkid()
     {
        isSkidPickedUp = true;
-        forkCollider.enabled = false;
+       // forkCollider.enabled = false;
         return isSkidPickedUp;
     }
 

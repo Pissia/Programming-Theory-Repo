@@ -10,6 +10,7 @@ public class FrokliftUnit : UnitMovement
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject skidPositionObj;
     [SerializeField] CapsuleCollider forkCollider;
+    [SerializeField] GameObject centerOfMass;
 
 
 
@@ -17,6 +18,7 @@ public class FrokliftUnit : UnitMovement
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+       // rb.centerOfMass = centerOfMass.transform.position;
         forkCollider = GetComponentInChildren<CapsuleCollider>();
     }
 
@@ -26,12 +28,12 @@ public class FrokliftUnit : UnitMovement
         if (isSelected)
         {
             Move(speed, rb);
-            Rotate(rb, rotationSpeedMultipleyer, -rb.velocity.x);
+            Rotate(rb, rotationSpeedMultipleyer, rb.velocity.z);
             MoveSkid(skidPositionObj.transform.position, rb.gameObject);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            PickUpSkid(forkCollider);
+            PickUpSkid();
         }
     }
 
