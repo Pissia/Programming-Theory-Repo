@@ -23,4 +23,18 @@ public class UnitMovement : MonoBehaviour
             rb.velocity = transform.TransformDirection(localVelocity);
         }
     }
+
+    public virtual void Rotate(Rigidbody rb, float rotationSpeed)
+    {
+        // doesn't work as intended for a worker
+
+
+        //rb.AddTorque(Vector3.up * rotationSpeed * Input.GetAxis("Horizontal"));
+
+        Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
+        rb.transform.Rotate(Vector3.up, rotationSpeed * Input.GetAxis("Horizontal"));
+        localVelocity.z = 0f;
+        rb.velocity = transform.TransformDirection(localVelocity);
+
+    }
 }
