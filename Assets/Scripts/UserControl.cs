@@ -8,6 +8,7 @@ public class UserControl : MonoBehaviour
     [SerializeField] GameObject markerPrefab;
     [SerializeField] private UnitMovement selectedUnit;
     [SerializeField] Camera GameCamera;
+    [SerializeField] private UnitMovement previouseUnit;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,19 @@ public class UserControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             //the collider could be children of the unit, so we make sure to check in the parent
-            var unit = hit.collider.GetComponentInParent<UnitMovement>();
-            selectedUnit = unit;
+            //Get Component results in error if clicked on the building 
+            //var unit = hit.collider.GetComponentInParent<UnitMovement>();
+            if(hit.collider.TryGetComponent<UnitMovement>(out var unit))
+            {
+                if(previouseUnit != null)
+                {
+                    previouseUnit.DeselectUnit();
+                    previouseUnit = null;
+                }
+                selectedUnit = unit;
+                selectedUnit.isSelected = true;
+                previouseUnit = unit;
+            }
         }
     }
 

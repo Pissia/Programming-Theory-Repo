@@ -19,9 +19,13 @@ public class WorkerUnit : UnitMovement
     // Update is called once per frame
     void Update()
     {
-        Move(speed, rb);
-        Rotate(rb, rotationSpeed);
+        if (isSelected)
+        {
+            Move(speed, rb);
+            Rotate(rb, rotationSpeed);
+        }
         UpdateAnimation();
+
     }
 
     private void UpdateAnimation()

@@ -1,11 +1,23 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    
+    public bool isSelected;
 
+    public virtual bool SelectedUnit()
+    {
+        isSelected = true;
+        return isSelected;
+    }
+
+    public virtual bool DeselectUnit()
+    {
+        isSelected = false;
+        return isSelected;
+    }
     public virtual void Move(float speed, Rigidbody rb)
     {
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);

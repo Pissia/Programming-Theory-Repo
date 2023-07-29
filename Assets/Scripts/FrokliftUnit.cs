@@ -20,8 +20,12 @@ public class FrokliftUnit : UnitMovement
     // Update is called once per frame
     void Update()
     {
-        Move(speed, rb);       
-        Rotate(rb, rotationSpeedMultipleyer, -rb.velocity.x);
+        if (isSelected)
+        {
+            Move(speed, rb);
+            Rotate(rb, rotationSpeedMultipleyer, -rb.velocity.x);
+        }
+       
     }
 
     private void FixedUpdate()
