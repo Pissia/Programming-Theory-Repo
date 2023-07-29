@@ -6,6 +6,8 @@ using UnityEngine;
 public class UnitMovement : MonoBehaviour
 {
     public bool isSelected;
+    public GameObject skid;
+    private bool isSkidPickedUp;
 
     public virtual bool SelectedUnit()
     {
@@ -49,4 +51,38 @@ public class UnitMovement : MonoBehaviour
         rb.velocity = transform.TransformDirection(localVelocity);
 
     }
+
+    public virtual bool PickUpSkid(CapsuleCollider forkCollider)
+    {
+       isSkidPickedUp = true;
+        forkCollider.enabled = false;
+        return isSkidPickedUp;
+    }
+
+    public virtual void MoveSkid(Vector3 skidPos , GameObject forkLift)
+    {
+        if (skid != null && isSkidPickedUp)
+        {
+            skid.GetComponent<Rigidbody>().isKinematic = true;
+            skid.GetComponent<Rigidbody>().mass = 0;
+            skid.transform.position = skidPos;
+            skid.transform.SetParent(forkLift.transform);
+
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Skids"))
+        {
+            skid = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        skid = null;
+    }
+
 }
