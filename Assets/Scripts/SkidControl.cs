@@ -9,6 +9,8 @@ public class SkidControl : MonoBehaviour
     {
         if (other.CompareTag("LoadingArea"))
         {
+            GetComponentInParent<UnitMovement>().DropSkid();
+            UIcontrol.instance._score++;
             gameObject.SetActive(false);
         }
     }

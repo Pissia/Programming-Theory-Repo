@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3126357780809225087}
   - component: {fileID: 6040758326336095177}
   - component: {fileID: 4460910546846304159}
+  - component: {fileID: 7191451950633467985}
   m_Layer: 0
   m_Name: Skid
   m_TagString: Skids
@@ -148,6 +149,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.3482041
   m_Center: {x: 0, y: 0, z: 0.09015131}
+--- !u!114 &7191451950633467985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8732826516860629132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e27c40083e9be949a648f60843b2fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3107689997258689628
 PrefabInstance:
   m_ObjectHideFlags: 0

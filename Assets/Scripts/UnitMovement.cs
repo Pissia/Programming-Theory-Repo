@@ -65,6 +65,8 @@ public class UnitMovement : MonoBehaviour
     public virtual bool DropSkid()
     {
         isSkidPickedUp = false;
+        isSkidAttached = false;
+        skid = null;
         // forkCollider.enabled = false;
         return isSkidPickedUp;
     }
@@ -126,7 +128,7 @@ public class UnitMovement : MonoBehaviour
         if (other.CompareTag("CraftingArea"))
         {
             isCraftingAreaInRange = false;
-            craftPos = Vector3.zero;
+            //craftPos = Vector3.zero;
         }
     }
 
