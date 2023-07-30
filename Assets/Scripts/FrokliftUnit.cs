@@ -35,6 +35,10 @@ public class FrokliftUnit : UnitMovement
         {
             PickUpSkid();
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DropSkid();
+        }
     }
 
     private void FixedUpdate()

@@ -8,6 +8,7 @@ public class WorkerUnit : UnitMovement
     [SerializeField] private float rotationSpeed;
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator animator;
+    [SerializeField] GameObject skidPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,11 @@ public class WorkerUnit : UnitMovement
         {
             Move(speed, rb);
             Rotate(rb, rotationSpeed);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                CraftSkid(skidPrefab);
+                Debug.Log("Button Pressed");
+            }
         }
         UpdateAnimation();
 
