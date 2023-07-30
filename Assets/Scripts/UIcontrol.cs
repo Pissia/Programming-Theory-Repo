@@ -10,6 +10,7 @@ public class UIcontrol : MonoBehaviour
     public static UIcontrol instance;
     [SerializeField] TextMeshProUGUI scoreText;
     private int score;
+    //Incapsulation
     public int _score
     {
         get { return score; }

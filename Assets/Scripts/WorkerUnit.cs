@@ -22,6 +22,7 @@ public class WorkerUnit : UnitMovement
     {
         if (isSelected)
         {
+            //Inheritated methods from Unit Movement (Move, Rotate, CraftSkid)
             Move(speed, rb);
             Rotate(rb, rotationSpeed);
             if (Input.GetKeyDown(KeyCode.F))
@@ -30,6 +31,7 @@ public class WorkerUnit : UnitMovement
                 Debug.Log("Button Pressed");
             }
         }
+        //Astraction
         UpdateAnimation();
 
     }

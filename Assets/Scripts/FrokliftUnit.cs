@@ -25,8 +25,10 @@ public class FrokliftUnit : UnitMovement
     // Update is called once per frame
     void Update()
     {
+        
         if (isSelected)
         {
+            //Inheritaed methods from Unit Movement class
             Move(speed, rb);
             Rotate(rb, rotationSpeedMultipleyer, rb.velocity.z);
             MoveSkid(skidPositionObj.transform.position, rb.gameObject);
@@ -39,10 +41,5 @@ public class FrokliftUnit : UnitMovement
         {
             DropSkid();
         }
-    }
-
-    private void FixedUpdate()
-    {
-       
     }
 }
